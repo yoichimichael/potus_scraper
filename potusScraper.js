@@ -2,6 +2,8 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 const url = 'https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States';
 
+const potusParser = require('./potusParser');
+
 rp(url).then(html => {
     const $ = cheerio.load(html);
     const presTable = $('.wikitable b > a');
