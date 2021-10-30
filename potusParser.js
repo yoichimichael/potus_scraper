@@ -8,7 +8,7 @@ module.exports = (url) => {
       const $ = cheerio.load(html);
       const name = $('#firstHeading').text();
       const birthday = $('span.bday')[0].children[0].data;
-      console.log({name, birthday});
+      return {name, birthday};
     })
     .catch(console.log);
 }

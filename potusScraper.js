@@ -12,5 +12,9 @@ rp(url).then(html => {
       const url = presTable[`${i}`].attribs.href;
       wikiUrls.push(url);
     }
-    console.log(wikiUrls)
-  }).catch(console.log);
+    return Promise.all(
+      wikiUrls.map(url => {
+        return potusParser('https://en.wikipedia.org' + url);
+      })
+    );
+  }).then(console.log).catch(console.log);
