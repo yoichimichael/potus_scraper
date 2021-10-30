@@ -1,10 +1,12 @@
 const rp = require('request-promise');
+const cheerio = require('cheerio');
 const url = 'https://en.wikipedia.org/wiki/George_Washington';
 
 rp(url)
-  .then(function(html) {
-    console.log(html);
+  .then(html => {
+    const $ = cheerio.load(html);
+    console.log("hello");
+    const birthday = $('span.bday').parent().parent().text();
+    console.log(birthday);
   })
-  .catch(function(err) {
-    //handle error
-  });
+  .catch(console.log);
